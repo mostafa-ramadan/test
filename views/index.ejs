@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ES Diagnosis Of Dental Diseases</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+
+	<header>
+		<div class="container">
+			<div class="logo">
+				<img src="/images/logo.png" style="width: 45px;height: 42px;">
+			</div>
+			<b>DENTAL.Dr.</b>
+			<a class="btn btn-outline-secondary" href="/admin">CONTROLL</a>
+		</div>
+	</header>
+	<div class="container" style="margin-bottom: 20px;">
+		<div class="row">
+			<div class="col-md-1">
+			</div>
+
+			<div class="col-md-10 mid">
+				<h3>ES<sup>s</sup> Diagnosis Of Dental Diseases</h3>
+				<div class="row">
+					<div class="col-md-4">
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#exampleModalScrollable" style="width: 300px;">
+							Tell Us Your Syndromes
+						</button>
+					</div>
+					<!-- <div class="illness col-md-4">
+						<form method="POST" action="/select"></form>
+							<select id="disease" name="select" class="browser-default custom-select">
+								<option selected disabled>Determine Your Illness</option>
+								<% diseases.forEach((index)=>{ %>
+								<option><%=index.title%></option>
+								<% }) %>
+							</select>
+						</form>
+					</div> -->
+					<div class="col-md-8">
+						<form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+							<input class="form-control mr-sm-2" type="search" name="search"
+								placeholder="Search For Disease" aria-label="Search" style="width: 80%;">
+							<input class="btn btn-primary my-2 my-sm-0" type="submit" value="Search">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1">
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalScrollableTitle">Tell Us What Do You Feel</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<div class="drop">
+						<form action="/select" method="POST">
+							<% diseases.forEach((index)=>{ %>
+							<% index.syndromes.forEach((index2)=>{ %>
+							<label><input type="checkbox" name="select" value="<%=index._id%>"><%=index2.syndrome%></label>
+							<% }) %>
+							<hr>
+							<% }) %>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<input type="submit" class="btn btn-primary" value="Get Results">
+							</div>
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<footer class="text-center" style="color: beige;">
+		Copyright &copy 2020 All Right Are Reserved.
+	</footer>
+
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>

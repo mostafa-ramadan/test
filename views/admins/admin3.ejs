@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <title>ES Admin Treatments</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/admin">ES Controll</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="btn btn-outline-secondary" style="margin-top: -8px;color: white;" data-toggle="modal"
+            data-target="#mostafa">Add New Treatment</a>
+    </nav>
+
+    <main role="main">
+        <div class="container" style="margin-top: 50px;">
+
+            <% if(results.treatments.length>0){%>
+
+            <table class="table table-hovered">
+                <thead>
+                    <tr>
+                        <th scope="col">Treatment ID</th>
+                        <th scope="col">Treatment Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% results.treatments.forEach((index)=>{ %>
+                    <tr>
+                        <th scope="row"><%=index._id%></th>
+                        <td><%=index.treatment%></td>
+                        <td>
+                            <a class="btn btn-success btn-sm" href="/<%=results._id%>/<%=index._id%>/treatments-update">Update</a>
+                            <a class="btn btn-danger btn-sm" href="/<%=results._id%>/<%=index._id%>/treatments-delete">Delete</a>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="mostafa" data-backdrop="static" tabindex="-1" role="dialog"
+                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="mostafa">Add New Treatment</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form method="POST" action="/<%=results._id%>/add-treatment">
+                                            <div class="modal-body">
+                                                <input placeholder="Enter Syndrome Name" class="form=control"
+                                                    name="treatment" required type="text" style="width: 100%;">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <input type="submit" class="btn btn-primary" value="Save Changes">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end modle -->
+
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            <% } else{%>
+            <div class="text-center">
+                No products found Click <a data-toggle="modal" data-target="#mostafa"
+                    style="color: blue; cursor: pointer;">Here</a> to add product.
+            </div>
+            <% } %>
+        </div>
+    </main>
+    <hr>
+
+    <!-- Modal -->
+    <div class="modal fade" id="mostafa" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mostafa">Add New Treatment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="/<%=results._id%>/add-treatment">
+                    <div class="modal-body">
+                        <input placeholder="Enter Syndrome Name" class="form=control" name="treatment" required
+                            type="text" style="width: 100%;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end modle -->
+
+
+    <div class="text-center">
+        Copyright &copy 2020 All Right Are Reserved.
+    </div>
+
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>
